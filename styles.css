@@ -37,7 +37,7 @@ body, html {
 
 /* Styles for the SoulDeck title */
 .title {
-    font-size: 100px;
+    font-size: 72px;
     color: #FF4081; /* Darker pink */
     margin-bottom: 40px; /* Spacing between the title and button */
 }
@@ -116,13 +116,13 @@ body, html {
 }
 
 .question-card {
-    width: 45%; /* Narrower width */
-    height: 60%; /* Taller height */
+    width: 75%; /* Narrower width */
+    height: 70%; /* Taller height */
     margin: 20px auto;
     padding: 10%;
     border-radius: 15px;
     text-align: center;
-    font-size: 2.6em;
+    font-size: 1.7em;
     display: flex;
     align-items: center;
     justify-content: center;

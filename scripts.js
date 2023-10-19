@@ -1,6 +1,3 @@
-let currentLevel = null;
-let questionIndex = 0;
-
 const levels = {
     'ice-breakers': [
         "What's your favorite color?",
@@ -171,43 +168,50 @@ function shuffleArray(array) {
     }
 }
 
+// Function to switch to the levels selection screen
 function showLevels() {
     document.body.setAttribute("data-screen", "levels");
-    document.getElementById('start-screen').style.display = 'none';
-    document.getElementById('levels').style.display = 'block';
+    console.log("showLevels function executed");
 }
 
+
+// Function to show the questions for a specific level
 function showQuestions(level) {
-    // Reset screens
-    document.getElementById('start-screen').style.display = 'none';
-    document.getElementById('levels').style.display = 'none';
-    document.getElementById('ice-breakers-screen').style.display = 'none';
-    document.getElementById('heart-talks-screen').style.display = 'none';
-    document.getElementById('soul-dive-screen').style.display = 'none';
-
-    // Display the selected level screen
-    document.getElementById(`${level}-screen`).style.display = 'block';
-
     currentLevel = level;
     shuffleArray(levels[currentLevel]);
     questionIndex = 0;
-
+    setScreen(`${level}`);
     displayQuestion();
+    console.log("showQuestions function called with level:", level);
+
 }
 
+// Function to get a random question for the current level
 function getRandomQuestion() {
     const questions = levels[currentLevel];
     return questions[Math.floor(Math.random() * questions.length)];
 }
 
+// Function to display the question in the respective question element
 function displayQuestion() {
     const question = getRandomQuestion();
     document.getElementById(`${currentLevel}-question`).innerText = question;
 }
 
+// Helper function to set the current screen based on the given screen name
+function setScreen(screenName) {
+    document.body.setAttribute("data-screen", screenName);
+    console.log("Setting screen to:", screenName);
+
+}
+
+// Setting click events for question cards to fetch the next question
 document.querySelectorAll('.question-card').forEach(card => {
     card.addEventListener('click', function() {
         questionIndex++;
         displayQuestion();
     });
 });
+
+let currentLevel = null;
+let questionIndex = 0;

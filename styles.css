@@ -1,33 +1,29 @@
-/* Background and general styles for the entire page */
-body {
+/* Global styles */
+body, html {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    height: 100%;
     display: flex;
-    flex-direction: column; /* Make elements stack vertically */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     min-height: 100vh;
+}
+
+/* Background and styles based on the screen data attribute */
+body[data-screen="start"] {
+    background-color: #ffe8d5; /* Pastel pink for start screen */
 }
 
 body[data-screen="levels"] {
     background-color: #3e3e3e; /* Dark gray for levels screen */
 }
 
-body[data-screen="start"] {
-    background-color: #ffe8d5; /* Pastel pink for start screen */
-}
-
-body, html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
+/* Initial Screen Hiding */
 .screen {
-    min-height: 100vh; /* Ensure each screen always takes up at least the entire viewport height */
-    display: flex;
+    display: none; /* Initially hide all screens */
+    min-height: 100vh;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -35,89 +31,74 @@ body, html {
     height: 100%;
 }
 
+/* Visibility based on data-screen attribute */
+body[data-screen="start"] #start-screen,
+body[data-screen="levels"] #levels,
+body[data-screen="ice-breakers"] #ice-breakers-screen,
+body[data-screen="heart-talks"] #heart-talks-screen,
+body[data-screen="soul-dive"] #soul-dive-screen {
+    display: flex;
+}
+
 /* Styles for the SoulDeck title */
 .title {
     font-size: 72px;
-    color: #FF4081; /* Darker pink */
-    margin-bottom: 40px; /* Spacing between the title and button */
+    color: #FF4081;
+    margin-bottom: 40px;
 }
 
 /* Styles for the "Pick a level" button */
 .start-btn {
-    background-color: #FF4081; /* Deep pink */
-    color: white; /* Text color */
-    padding: 10px 20px; 
-    border-radius: 25px; /* Rounded corners */
-    border: none; /* Remove default border */
+    background-color: #FF4081;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
     cursor: pointer;
     font-size: 32px;
-    transition: 0.3s; /* Smooth transition for hover effect */
+    transition: 0.3s;
 }
 
 .start-btn:hover {
-    background-color: #E73567; /* Slightly darker pink on hover */
+    background-color: #E73567;
 }
 
-#levels {
-    background-color: #3e3e3e; /* Dark gray */
-    display: flex;
-    flex-direction: column; /* Stack children vertically */
-    justify-content: center; /* Center children vertically */
-    align-items: center;     /* Center children horizontally */
-    height: 100%;            /* Ensure it takes up the whole parent's height */
-    width: 100%;             /* Ensure it takes up the whole parent's width */
-    position: absolute;      /* Make it position relative to the viewport */
-    top: 0;                  /* Start from the top of the viewport */
-    left: 0;                 /* Start from the left of the viewport */
-}
-
-/* General styles for the level buttons */
+/* Styles for the level buttons */
 .level-btn {
     padding: 10px 20px;
-    margin: 10px 0; /* Give some spacing between the buttons */
-    color: white; /* Optional: Choose your desired text color */
+    margin: 10px;
+    color: white;
     border: none;
-    margin-right: 50px;
-    border-radius: 15px; /* Rounded corners */
+    border-radius: 15px;
     cursor: pointer;
     transition: 0.3s;
-    width: 300px; /* Set the width of each card */
-    height: 450px; /* Set the height of each card */
-    text-align: center; /* Center the text */
-    line-height: 300px; /* Vertical centering of the text */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
-    color: white; /* Text color */
-    font-size: 50px; /* Font size */
+    width: 300px;
+    height: 250px;
+    text-align: center;
+    line-height: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 50px;
 }
 
 .level-btn:hover {
-    filter: brightness(90%); /* Slightly darken the color on hover */
+    filter: brightness(90%);
 }
 
 #ice-breakers {
-    background-color: #fcf77c; /* Updated yellow color for Ice Breakers */
+    background-color: #fcf77c;
 }
 
 #heart-talks {
-    background-color: #a5ffcd; /* Updated teal color for Heart Talks */
+    background-color: #a5ffcd;
 }
 
 #soul-dive {
-    background-color: #1d288e; /* Updated navy color for Soul Dive */
-}
-
-.full-height {
-    height: 100%; /* This will ensure that the screen takes up the full viewport height */
-    width: 100%; /* This will ensure that the screen takes up the full viewport width */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    background-color: #1d288e;
 }
 
 .question-card {
-    width: 75%; /* Narrower width */
-    height: 70%; /* Taller height */
+    width: 75%;
+    height: 70%;
     margin: 20px auto;
     padding: 10%;
     border-radius: 15px;
@@ -126,7 +107,8 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box; /* Include padding in width and height */
+    box-sizing: border-box;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); 
 }
 
 /* Background and card colors for the Ice Breakers questions */
@@ -154,22 +136,25 @@ body, html {
     background-color: #1d288e;
 }
 
+#ice-breakers-screen,
+#heart-talks-screen,
+#soul-dive-screen {
+    height: 100vh;  /* This will ensure the section's height is the full height of the viewport */
+    width: 100vw;   /* This will ensure the section's width is the full width of the viewport */
+}
+
+
 .soul-dive-card {
     background-color: #1e2673;
     color: white;
 }
 
-/* Enhanced shadow effect for question cards for a more 3D appearance */
-.question-card {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); 
-}
-
 .question-card.swiping-left {
-    transform: translateX(-50px) scale(0.95); /* Move it 50 pixels to the left and slightly scale down */
-    opacity: 0.7; /* Make it slightly transparent */
+    transform: translateX(-50px) scale(0.95);
+    opacity: 0.7;
 }
 
 .question-card.swiping-right {
-    transform: translateX(50px) scale(0.95); /* Move it 50 pixels to the right and slightly scale down */
-    opacity: 0.7; /* Make it slightly transparent */
+    transform: translateX(50px) scale(0.95);
+    opacity: 0.7;
 }

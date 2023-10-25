@@ -127,7 +127,10 @@ body[data-screen="soul-dive"] #soul-dive-screen {
 }
 
 .heart-talks-card {
-    background-color: #7bc09a;
+    background-image: url('secondscreenimg.png');
+    background-size: cover;  /* Cover the entire area */
+    background-repeat: no-repeat;  /* Do not repeat the image */
+    background-position: center center;  /* Center the image */
     color: white;
 }
 
